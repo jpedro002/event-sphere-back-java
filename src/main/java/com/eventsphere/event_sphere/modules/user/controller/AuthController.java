@@ -32,6 +32,11 @@ public class AuthController {
             return ResponseEntity.created(null).body(res);
 
         } catch (Exception e) {
+
+            if (e.getMessage().equals("usuario já cadastrado")) {
+                return ResponseEntity.status(409).body(new ErrorMessageDTO("User already registered"));
+            }
+
             return ResponseEntity.badRequest().body(new ErrorMessageDTO(e.getMessage()));
         }
 

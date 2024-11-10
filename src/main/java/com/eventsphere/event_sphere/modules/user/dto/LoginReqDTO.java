@@ -17,6 +17,6 @@ public class LoginReqDTO {
     private String email;
 
     @NotBlank(message = "O campo [password] é obrigatório.")
-    @Size(min = 6, max = 60, message = "A senha deve ter entre 6 e 60 caracteres.")
+    @Size(min = 4, max = 60, message = "A senha deve ter entre 4 e 60 caracteres.")
     private String password;
 }
