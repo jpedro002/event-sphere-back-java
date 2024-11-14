@@ -27,12 +27,9 @@ public class SecurityConfig {
                         authz -> authz
                                 .requestMatchers("/auth/login").permitAll()
                                 .requestMatchers("/auth/register").permitAll()
-                                .requestMatchers("/ping").hasAuthority("USER")
                                 .requestMatchers("/rooms/create").hasAuthority(RoleEnum.ADMIN.name())
-                                .anyRequest().authenticated()
-        // .requestMatchers("/admin/**").hasRole("ADMIN")
-        // .anyRequest().denyAll()
-        )
+                                .requestMatchers("/users/**").hasAuthority(RoleEnum.ADMIN.name())
+                                .anyRequest().authenticated())
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class);
         return http.build();
     }
